@@ -1,0 +1,12 @@
+* That Voice Thing
+
+** The Vision
+# What is it that we want to achieve
+- Make a library that works with frameworks like Vuex and Redux which would execute actions based on user's intent.
+  - Make a word index along with associated probabilities for each action
+    - Need a list of text, along with the associated intent as a dataset.
+    - The word index is generated from this dataset.
+  - Give end user's of the library a way to make this word index and "train" the algorithm.
+  - Create a way for the library to accept a string as input and return a prediction
+- Create a another library that wraps around the webspeech api and turns voice into strings for the first library to accept
+  - Have this library generate speech grammer from the word index.
