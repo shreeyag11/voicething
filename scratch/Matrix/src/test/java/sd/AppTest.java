@@ -28,7 +28,11 @@ public class AppTest extends TestCase {
      * Rigourous Test :-)
      */
     public void testAdder() {
-        Adder a = new Adder(3, 3);
-        assertTrue(a.add() == 6);
+        double[][] x = { { 1, 2, 3 }, { 4, 5, 6 } };
+        double[][] y = { { 7, 8 }, { 9, 10 }, { 11, 12 } };
+        double[][] z = { { 58, 64 }, { 139, 154 } };
+        Matrix a = new Matrix(x);
+        Matrix b = new Matrix(y);
+        assertTrue(a.matMul(b).data == z);
     }
 }

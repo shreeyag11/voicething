@@ -1,9 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: sd.AppTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.005 sec <<< FAILURE!
-testAdder(sd.AppTest)  Time elapsed: 0.003 sec  <<< ERROR!
-java.lang.Error: Unresolved compilation problem: 
-	Incompatible operand types Number and int
-	at sd.AppTest.testAdder(AppTest.java:32)
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.016 sec <<< FAILURE!
+testAdder(sd.AppTest)  Time elapsed: 0.011 sec  <<< FAILURE!
+junit.framework.AssertionFailedError
+	at junit.framework.Assert.fail(Assert.java:47)
+	at junit.framework.Assert.assertTrue(Assert.java:20)
+	at junit.framework.Assert.assertTrue(Assert.java:27)
+	at sd.AppTest.testAdder(AppTest.java:36)
 
