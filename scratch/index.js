@@ -1,4 +1,5 @@
-var grammar = '#JSGF V1.0; grammar colors; public <color> = aqua | azure | beige | bisque | black | blue | brown | chocolate | coral | crimson | cyan | fuchsia | ghostwhite | gold | goldenrod | gray | green | indigo | ivory | khaki | lavender | lime | linen | magenta | maroon | moccasin | navy | olive | orange | orchid | peru | pink | plum | purple | red | salmon | sienna | silver | snow | tan | teal | thistle | tomato | turquoise | violet | white | yellow ;'
+import { data, grammar } from './probs.js';
+
 var recognition = new webkitSpeechRecognition();
 var speechRecognitionList = new webkitSpeechGrammarList();
 speechRecognitionList.addFromString(grammar, 1);
@@ -32,10 +33,15 @@ document.querySelector(".stop").onclick = function () {
     console.log('Ready to receive a color command.');
 }
 
+function predict(data, word) {
+    labels = Object.keys(data['13'])
+    console.log(labels);
+}
+
 recognition.onresult = function (event) {
-    var color = event.results[0][0].transcript;
-    diagnostic.textContent = 'Result received: ' + color;
-    bg.style.backgroundColor = color;
+    var word = event.results[0][0].transcript;
+    diagnostic.textContent = 'Result received: ' + predict(data, word);
+    // bg.style.backgroundColor = color;
     recognition.abort();
     recognition.start();
 }
