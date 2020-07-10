@@ -33,13 +33,46 @@ document.querySelector(".stop").onclick = function () {
     console.log('Ready to receive a color command.');
 }
 
-function predict(data, word) {
-    labels = Object.keys(data['13'])
-    console.log(labels);
+function predict(data, query) {
+    let labels = Object.keys(data['13'])
+    let prediction = {};
+
+    labels.forEach(label => prediction[label] = 1);
+
+    labels.forEach(label => {
+        let allZero = true;
+        query.split(" ").forEach(word => {
+            if (data[word]) {
+                if (data[word][label] != 0) {
+                    prediction[label] *= data[word][label];
+                    allZero = false;
+                }
+            } else {
+                console.log(word)
+            }
+        })
+        if (allZero)
+            prediction[label] = 0;
+    })
+
+    let max = 0;
+    let result = "";
+    console.log(prediction);
+    Object.keys(prediction).forEach(label => {
+        let prob = prediction[label];
+        if (prob > max) {
+            max = prob;
+            result = label;
+        }
+    })
+
+    return result;
+
 }
 
 recognition.onresult = function (event) {
     var word = event.results[0][0].transcript;
+    console.log(word);
     diagnostic.textContent = 'Result received: ' + predict(data, word);
     // bg.style.backgroundColor = color;
     recognition.abort();
